@@ -14,8 +14,10 @@ class ApiService with ChangeNotifier {
     );
 
     if (response.statusCode == 200) {
+      debugPrint(response.body);
       List body = jsonDecode(response.body);
       List<Filme> filmes = body.map((item) => Filme.fromJson(item)).toList();
+
       return filmes;
     } else {
       throw Exception('Falha ao obter os filmes');

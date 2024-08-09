@@ -15,10 +15,10 @@ class Filme {
 
   factory Filme.fromJson(Map<String, dynamic> json) {
     return Filme(
-      id: int.parse(json["id"]),
+      id: json["id"],
       titulo: json["titulo"],
       descricao: json["descricao"],
-      ano: int.parse(json["ano"]),
+      ano: json["ano"],
       foto: json["foto"],
     );
   }

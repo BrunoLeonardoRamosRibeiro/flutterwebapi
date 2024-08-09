@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterwebapi/services/movie_service.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,9 +12,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final provider = Provider.of<ApiService>(context);
+
+    return Scaffold(
       body: Center(
-        child: Text('Bem vindo!'),
+        child: ElevatedButton(
+          onPressed: () {
+            provider.listarFilmes();
+          },
+          child: const Text('Clique aqui'),
+        ),
       ),
     );
   }
