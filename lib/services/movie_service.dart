@@ -30,6 +30,7 @@ class ApiService with ChangeNotifier {
       headers: {"content-type": "application/json"},
       body: jsonEncode(filme.toJson()),
     );
+    notifyListeners();
 
     if (response.statusCode == 201) {
       return Filme.fromJson(jsonDecode(response.body));
@@ -44,6 +45,7 @@ class ApiService with ChangeNotifier {
       headers: {"content-type": "application/json"},
       body: jsonEncode(filme.toJson()),
     );
+    notifyListeners();
 
     if (response.statusCode == 200) {
       return Filme.fromJson(jsonDecode(response.body));
@@ -57,6 +59,8 @@ class ApiService with ChangeNotifier {
       Uri.parse(url + id.toString()),
       headers: {"content-type": "application/json"},
     );
+
+    notifyListeners();
 
     if (response.statusCode != 204) {
       throw Exception('Falha ao deletar o filme');
